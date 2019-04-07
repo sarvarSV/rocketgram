@@ -37,7 +37,7 @@ run_updates(bot)
 @make.waiter
 @commonfilters.update_type(UpdateType.message) #Specify update type
 @commonfilters.chat_type(ChatType.private) #ChatType contains private, group, supergoup and channel
-def next_all(ctx: Context): #Returns bool
+def next_all(ctx: Context): -> Returns bool
     return True
   ```
 # Using your waiters
