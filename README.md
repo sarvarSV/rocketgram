@@ -32,7 +32,7 @@ async def start_command(ctx: Context):
 run_updates(bot)
 ```
 
-#Making your waiters
+# Making your waiters
 ```python
 @make.waiter
 @commonfilters.update_type(UpdateType.message) #Specify update type
@@ -40,7 +40,7 @@ run_updates(bot)
 def next_all(ctx: Context): #Returns bool
     return True
   ```
-#Using your waiters
+# Using your waiters
 ```python
 @router.handler
 @commonfilters.chat_type(ChatType.private)
