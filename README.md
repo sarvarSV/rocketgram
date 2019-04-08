@@ -53,4 +53,16 @@ async def create_new_bot(ctx: Context):
         if ctx.update.message.text == '/cancel':
             await ctx.send_message("The command newbot has been cancelled. Anything else I can do for you?")
             return
-            ```
+```
+
+# A little about update_type
+```python
+#update_type is field 
+#what is calculated on the basis of incoming data.
+
+        if ctx.update.message.text == '/cancel':
+            await ctx.send_message("Cancelled")
+            return
+        if ctx.update.message.text: -> There we can get a text from user
+            await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
+```
