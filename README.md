@@ -37,7 +37,7 @@ run_updates(bot)
 @make.waiter
 @commonfilters.update_type(UpdateType.message) #Specify update type
 @commonfilters.chat_type(ChatType.private) #ChatType contains private, group, supergoup and channel
-def next_all(ctx: Context): -> Returns bool
+def next_all(ctx: Context): -> Bool
     return True
   ```
 # Using your waiters
@@ -63,7 +63,7 @@ async def create_new_bot(ctx: Context):
 
 @router.handler
 @commonfilters.chat_type(ChatType.private)
-@commonfilters.update_type(UpdateType.message) -> #There we used update_type handler to catch only messages from users
+@commonfilters.update_type(UpdateType.message) #There we used update_type handler to catch only messages from users
 async def return_all_messages(ctx: Context):
        await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
         if ctx.update.message.text == '/cancel':
@@ -79,7 +79,7 @@ async def return_all_messages(ctx: Context):
 from rocketgram import InlineKeyboardMarkup, InlineKeyboardButton, InlineKeyboard
 
 kb = InlineKeyboard() -> it's a class that renders keyboard types conveniently
-kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback('Third kb', 'kb3') -> #row() method used
+kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback('Third kb', 'kb3') #row() method used
 #to insert a "break"
 
 ```
@@ -91,5 +91,5 @@ kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback
 @commonfilters.chat_type(ChatType.private)
 @commonfilters.update_type(UpdateType.message)
 async def return_all_messages(ctx: Context):
-       await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render()) -> #Render used to generate markup of the #appropriate type
+       await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render()) #Render used to generate markup of the #appropriate type
 ```
