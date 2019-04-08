@@ -60,9 +60,36 @@ async def create_new_bot(ctx: Context):
 #update_type is field 
 #what is calculated on the basis of incoming data.
 
+
+@router.handler
+@commonfilters.chat_type(ChatType.private)
+@commonfilters.update_type(UpdateType.message) -> #There we used update_type handler to catch only messages from users
+async def return_all_messages(ctx: Context):
+       await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
         if ctx.update.message.text == '/cancel':
             await ctx.send_message("Cancelled")
             return
         if ctx.update.message.text: -> #There we can get a text from user
             await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
+```
+# Inline keyboards
+```python
+#Unlike other libraries, rocketgram using a bit-different form of inline keyboards.
+
+from rocketgram import InlineKeyboardMarkup, InlineKeyboardButton, InlineKeyboard
+
+kb = InlineKeyboard() -> it's a class that renders keyboard types conveniently
+kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback('Third kb', 'kb3') -> #row() method used
+#to insert a "break"
+
+```
+# Using inline keyboards
+```python
+#Inline buttons that we made above very easy to use
+
+@router.handler
+@commonfilters.chat_type(ChatType.private)
+@commonfilters.update_type(UpdateType.message)
+async def return_all_messages(ctx: Context):
+       await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render()) -> #Render used to generate markup of the #appropriate type
 ```
