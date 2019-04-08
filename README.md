@@ -78,7 +78,7 @@ async def return_all_messages(ctx: Context):
 
 from rocketgram import InlineKeyboardMarkup, InlineKeyboardButton, InlineKeyboard
 
-kb = InlineKeyboard() #it's a class that renders keyboard types conveniently
+kb = InlineKeyboard() # It's a class that renders keyboard types conveniently
 kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback('Third kb', 'kb3') #row() method used
 #to insert a "break"
 
@@ -92,4 +92,22 @@ kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback
 @commonfilters.update_type(UpdateType.message)
 async def return_all_messages(ctx: Context):
        await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render()) #Render used to generate markup of the #appropriate type
+```
+# Keyboards
+```python
+#Keyboards are being created as easy as InlineKeyboards
+
+keyboard = ReplyKeyboard() #Renders the keyboard in the same way as shown above.
+keyboard.text('Hello! 😀').row()
+keyboard.text('Hola! 😃').row()
+keyboard.text('Привет! 😄').row()
+```
+
+# Using keyboards
+```python
+@router.handler
+@commonfilters.chat_type(ChatType.private)
+@commonfilters.update_type(UpdateType.message)
+async def return_all_messages(ctx: Context):
+       await ctx.send_message(ctx.update.message.text, reply_markup=kb.keyboard.render()) #Used as shown above
 ```
