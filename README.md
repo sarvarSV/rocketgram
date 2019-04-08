@@ -69,7 +69,7 @@ async def return_all_messages(ctx: Context):
         if ctx.update.message.text == '/cancel':
             await ctx.send_message("Cancelled")
             return
-        if ctx.update.message.text: -> #There we can get a text from user
+        if ctx.update.message.text: #There we can get a text from user
             await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
 ```
 # Inline keyboards
@@ -78,7 +78,7 @@ async def return_all_messages(ctx: Context):
 
 from rocketgram import InlineKeyboardMarkup, InlineKeyboardButton, InlineKeyboard
 
-kb = InlineKeyboard() -> it's a class that renders keyboard types conveniently
+kb = InlineKeyboard() #it's a class that renders keyboard types conveniently
 kb.callback('First kb', 'kb1').row().callback('Second kb', 'kb2').row().callback('Third kb', 'kb3') #row() method used
 #to insert a "break"
 
