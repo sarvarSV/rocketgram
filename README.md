@@ -63,6 +63,6 @@ async def create_new_bot(ctx: Context):
         if ctx.update.message.text == '/cancel':
             await ctx.send_message("Cancelled")
             return
-        if ctx.update.message.text: -> There we can get a text from user
+        if ctx.update.message.text: -> #There we can get a text from user
             await ctx.send_message(ctx.update.message.text, reply_markup=kb.kb.render())
 ```
